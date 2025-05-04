@@ -4,7 +4,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_virtual_machine" "test" {
-  name                  = "test-terraform"
+  name                  = "test-vm"
   location              = "UK West"
   resource_group_name   = "golive"
   network_interface_ids = [
@@ -17,14 +17,14 @@ resource "azurerm_virtual_machine" "test" {
   }
 
   storage_os_disk {
-    name              = "terraform-disk"
+    name              = "test-vm-disk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
 
   os_profile {
-    computer_name  = "test-terraform"
+    computer_name  = "test-vm"
     admin_username = "devops18"
     admin_password = "Passw0rd@1234"
   }
