@@ -25,7 +25,7 @@ resource "azurerm_virtual_machine" "test" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "terraform"
+    computer_name  = "terraform-test"
     admin_username = "devops18  "
     admin_password = "Passw0rd@1234"
   }
