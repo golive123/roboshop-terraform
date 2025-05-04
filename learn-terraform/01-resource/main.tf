@@ -7,7 +7,7 @@ resource "azurerm_virtual_machine" "test" {
   location              = "UK West"
   resource_group_name   = "golive"
   network_interface_ids = ["/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/virtualNetworks/golive-vnet"]
-  vm_size               = "Standard_B2ls"
+  vm_size               = "Standard_B2s"
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
   delete_os_disk_on_termination = true
