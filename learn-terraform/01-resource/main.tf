@@ -26,7 +26,7 @@ resource "azurerm_virtual_machine" "test" {
   }
   os_profile {
     computer_name  = "terraform-test"
-    admin_username = "devops18  "
+    admin_username = "devops18"
     admin_password = "Passw0rd@1234"
   }
   os_profile_linux_config {
