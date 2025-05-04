@@ -6,7 +6,7 @@ resource "azurerm_virtual_machine" "test" {
   name                  = "terraform-test"
   location              = "UK West"
   resource_group_name   = "golive"
-  network_interface_ids = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/virtualNetworks/golive-vnet"
+  network_interface_ids = ["/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/virtualNetworks/golive-vnet"]
   vm_size               = "Standard_B2ls_v2 "
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
