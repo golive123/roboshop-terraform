@@ -3,7 +3,6 @@ provider "azurerm" {
   subscription_id = "a9bc3c93-b459-4ffb-8364-38ff9554f652"
 }
 
-
 resource "azurerm_virtual_machine" "test" {
   name                  = "test-terraform"
   location              = "UK West"
@@ -15,7 +14,8 @@ resource "azurerm_virtual_machine" "test" {
 
   storage_image_reference {
     id = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Compute/images/imageserver-golive"
-  storage_os_disk {
+  }
+    storage_os_disk {
     name              = "test-terraform-disk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
