@@ -10,9 +10,7 @@ resource "azurerm_linux_virtual_machine" "test" {
   size                = "Standard_B2s"
   admin_username      = "devops18"
   admin_password      = "Passw0rd@1234"
-  network_interface_ids = [
-    "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/networkInterfaces/golive-nic"
-  ]
+  network_interface_ids = ["/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive"]
   disable_password_authentication = false
 
   source_image_id = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Compute/images/imageserver-golive"
