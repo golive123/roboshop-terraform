@@ -1,4 +1,7 @@
-{
+provider "azurerm" {
+  features {}
+  subscription_id = "a9bc3c93-b459-4ffb-8364-38ff9554f652"
+}
 resource "azurerm_virtual_machine" "test" {
   name                  = "terraform-test"
   location              = "UK West"
