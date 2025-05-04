@@ -1,7 +1,7 @@
 provider "azurerm" {
   features {}
   subscription_id = "a9bc3c93-b459-4ffb-8364-38ff9554f652"
-}
+  }
 resource "azurerm_virtual_machine" "test" {
   name                  = "terraform-test"
   location              = "UK West"
@@ -28,5 +28,11 @@ resource "azurerm_virtual_machine" "test" {
     computer_name  = "terraform"
     admin_username = "devops18  "
     admin_password = "Passw0rd@1234"
+  }
+  os_profile_linux_config {
+    disable_password_authentication = false
+  }
+  tags = {
+    environment = "staging"
   }
 }
