@@ -61,6 +61,7 @@ resource "azurerm_virtual_machine" "vm" {
       "sudo pip3.12 install ansible",
       "ansible pull -i localhost, -U 'https://github.com/udayacharagundla/roboshop-ansible.git' -e roboshop.yml -app_name=${var.name} -env=dev"
     ]
+
   }
 }
 
