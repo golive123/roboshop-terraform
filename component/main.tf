@@ -59,6 +59,7 @@ resource "azurerm_virtual_machine" "vm" {
     inline = [
       "sudo dnf install python3.12 python3.12-pip-y",
       "sudo pip3.12 install ansible"
+      "ansible pull -i localhost, -U "https://github.com/udayacharagundla/roboshop-ansible.git" -e roboshop.yml -app_name={var.name} -env=dev
     ]
   }
 }
