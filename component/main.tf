@@ -1,51 +1,52 @@
-
+# Public IP
 resource "azurerm_public_ip" "publicip" {
-  name                  = "var.name"
-  location              = "var.location"
-  resource_group_name   = "var.rg_name"
-  allocation_method     = "Static"
-  #public_ip_address_id = azurerm-public_ip.frontend.id
- }
+  name                = var.name
+  location            = var.location
+  resource_group_name = var.rg_name
+  allocation_method   = "Static"
+}
 
+# Network Interface
 resource "azurerm_network_interface" "network" {
-  name                = "var.name"
-  location            = "var.location"
-  resource_group_name = "var.rg_name"
- }
+  name                = var.name
+  location            = var.location
+  resource_group_name = var.rg_name
 
   ip_configuration {
-    name                 = "var.name"
-    subnet_id            = "var.ip_configuration_subnet_id"
-    public_ip_address_id = "azurerm_public_ip.publicip.id"
- }
+    name                          = var.name
+    subnet_id                     = var.ip_configuration_subnet_id
+    public_ip_address_id          = azurerm_public_ip.publicip.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
 
- resource  "azurerm_virtual_machine" "vm" {
-  name                          = "var.name"
-  location                      = "var.location"
-  resource_group_name           = "var.rg_name"
+# Virtual Machine
+resource "azurerm_virtual_machine" "vm" {
+  name                          = var.name
+  location                      = var.location
+  resource_group_name           = var.rg_name
   network_interface_ids         = [azurerm_network_interface.network.id]
   vm_size                       = "Standard_B2s"
   delete_os_disk_on_termination = true
- }
 
- storage_image_reference {
+  storage_image_reference {
     id = var.storage_image_reference_id
- }
+  }
 
- storage_os_disk {
-    name              = "{var.name}-disk"
+  storage_os_disk {
+    name              = "${var.name}-disk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
- }
+  }
 
- os_profile {
-    computer_name  = "var.name"
+  os_profile {
+    computer_name  = var.name
     admin_username = "devops18"
     admin_password = "Passw0rd@1234"
- }
+  }
 
- os_profile_linux_config {
+  os_profile_linux_config {
     disable_password_authentication = false
- }
+  }
 }
