@@ -7,8 +7,9 @@ variable "zone_name" {
 }
 
 variable "location" {
-  default = "UK west"
+  default = "UK West"
 }
+
 variable "rg_name" {
   default = "golive"
 }
