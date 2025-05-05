@@ -7,7 +7,7 @@ module "frontend" {
   ip_configuration_subnet_id = var.ip_configuration_subnet_id
   zone_name                  = var.zone_name
 }
-
+#to test
  #  module "mongodb" {
  #   source                     = "./component"
  #   name                       = "mongodb"
@@ -97,6 +97,7 @@ module "frontend" {
  #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
  #   zone_name                  = var.zone_name
  # }
+
 
 
 
