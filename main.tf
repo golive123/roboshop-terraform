@@ -1,45 +1,103 @@
-provider "azurerm" {
-  features {}
-  subscription_id = "a9bc3c93-b459-4ffb-8364-38ff9554f652"
-}
+ module "frontend" {
+  source                     = "./component"
+  name                       = "frontend"
+  location                   = "var.location"
+  rg_name                    = "var.rg_name"
+  storage_image_reference_id = "var.storage_image_reference_id"
+  ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+  zone_name                  = "var.zone_name"
+ }
 
-resource "azurerm_public_ip" "frontend" {
-  name                = "frontend"
-  location              = "UK West"
-  resource_group_name   = "golive"
-  allocation_method   = "Dynamic"
-}
+ module "mongodb" {
+   source                     = "./component"
+   name                       = "mongodb"
+   location                   = "var.location"
+   rg_name                    = "var.rg_name"
+   storage_image_reference_id = "var.storage_image_reference_id"
+   ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+   zone_name                  = "var.zone_name"
+ }
 
-resource "azurerm_virtual_machine" "frontend" {
-  name                  = "frontend-vm"
-  location              = "UK West"
-  resource_group_name   = "golive"
-  network_interface_ids = ["/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/networkInterfaces/workstation758"]
-  vm_size               = "Standard_B2s"
+ module "redis" {
+   source                     = "./component"
+   name                       = "redis"
+   location                   = "var.location"
+   rg_name                    = "var.rg_name"
+   storage_image_reference_id = "var.storage_image_reference_id"
+   ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+   zone_name                  = "var.zone_name"
+ }
 
-  delete_os_disk_on_termination = true
+ module "catalogue" {
+   source                     = "./component"
+   name                       = "catalogue"
+   location                   = "var.location"
+   rg_name                    = "var.rg_name"
+   storage_image_reference_id = "var.storage_image_reference_id"
+   ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+   zone_name                  = "var.zone_name"
+ }
 
-  storage_image_reference {
-    id = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Compute/images/terraform-frontend-image"
-  }
-  storage_os_disk {
-    name              = "frontend-vm-disk"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-  }
-  os_profile {
-    computer_name  = "frontend-vm"
-    admin_username = "devops18"
-    admin_password = "Passw0rd@1234"
-  }
+ module "mysql" {
+   source                     = "./component"
+   name                       = "mysql"
+   location                   = "var.location"
+   rg_name                    = "var.rg_name"
+   storage_image_reference_id = "var.storage_image_reference_id"
+   ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+   zone_name                  = "var.zone_name"
+ }
 
-  os_profile_linux_config {
-    disable_password_authentication = false
-  }
-  data "azurerm_dns_a_record" "frontend" {
-    name                = "frontend-dev"
-    zone_name           = "obicard.com"
-    resource_group_name = "golive"
-  }
-}
+ module "user" {
+   source                     = "./component"
+   name                       = "user"
+   location                   = "var.location"
+   rg_name                    = "var.rg_name"
+   storage_image_reference_id = "var.storage_image_reference_id"
+   ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+   zone_name                  = "var.zone_name"
+ }
+
+ module "cart" {
+   source                     = "./component"
+   name                       = "cart"
+   location                   = "var.location"
+   rg_name                    = "var.rg_name"
+   storage_image_reference_id = "var.storage_image_reference_id"
+   ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+   zone_name                  = "var.zone_name"
+ }
+
+ module "rabbitmq" {
+   source                     = "./component"
+   name                       = "rabbitmq"
+   location                   = "var.location"
+   rg_name                    = "var.rg_name"
+   storage_image_reference_id = "var.storage_image_reference_id"
+   ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+   zone_name                  = "var.zone_name"
+ }
+
+ module "shipping" {
+   source                     = "./component"
+   name                       = "shipping"
+   location                   = "var.location"
+   rg_name                    = "var.rg_name"
+   storage_image_reference_id = "var.storage_image_reference_id"
+   ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+   zone_name                  = "var.zone_name"
+ }
+
+ module "payment" {
+   source                     = "./component"
+   name                       = "payment"
+   location                   = "var.location"
+   rg_name                    = "var.rg_name"
+   storage_image_reference_id = "var.storage_image_reference_id"
+   ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+   zone_name                  = "var.zone_name"
+ }
+
+
+
+
