@@ -15,5 +15,5 @@ variable "rg_name" {
 }
 
 variable "storage_image_reference_id" {
-  default = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Compute/images/terraform-frontend-image"
+  default = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Compute/images/terraform-test-image"
 }
