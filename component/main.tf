@@ -53,7 +53,7 @@ resource "azurerm_virtual_machine" "vm" {
     type = "ssh"
     user = "devops18"
     password = "Passw0rd@1234"
-    host     = "azurerm_network_interface.privateip.id"
+    host     = "azurerm_network_interface.network.private_ip_address"
   }
   provisioner "remote-exec" {
     inline = [
