@@ -20,6 +20,31 @@ resource "azurerm_network_interface" "privateip" {
   }
 }
 
+# Network Security Group
+resource "azurerm_network_security_group" "nsg" {
+  name                = "allowall"
+  location            = var.location
+  resource_group_name = var.rg_name
+
+  security_rule {
+    name                       = "SSH"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+}
+
+# Associate NSG with NIC
+resource "azurerm_network_interface_security_group_association" "nsg_assoc" {
+  network_interface_id      = azurerm_network_interface.privateip.id
+  network_security_group_id = azurerm_network_security_group.nsg.id
+}
+
 # Virtual Machine
 resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
@@ -54,7 +79,7 @@ resource "azurerm_virtual_machine" "vm" {
     type     = "ssh"
     user     = "devops18"
     password = "Passw0rd@1234"
-    host     = azurerm_public_ip.publicip.id
+    host     = azurerm_public_ip.publicip.ip_address
   }
 
   provisioner "remote-exec" {
