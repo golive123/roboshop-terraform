@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "privateip" {
   ip_configuration {
     name                          = var.name
     subnet_id                     = var.ip_configuration_subnet_id
-    public_ip_address_id          = azurerm_public_ip.privateip.id
+    public_ip_address_id          = azurerm_public_ip.publicip.id
     private_ip_address_allocation = "Dynamic"
   }
 }
@@ -54,7 +54,7 @@ resource "azurerm_virtual_machine" "vm" {
     type     = "ssh"
     user     = "devops18"
     password = "Passw0rd@1234"
-    host     = azurerm_public_ip.privateip.id
+    host     = azurerm_public_ip.publicip.id
   }
 
   provisioner "remote-exec" {
