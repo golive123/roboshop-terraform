@@ -49,12 +49,14 @@ resource "azurerm_virtual_machine" "vm" {
   os_profile_linux_config {
     disable_password_authentication = false
   }
+
   connection {
-    type = "ssh"
-    user = "devops18"
+    type     = "ssh"
+    user     = "devops18"
     password = "Passw0rd@1234"
-    host     = "azurerm_network_interface.network.private_ip_address"
+    host     = azurerm_network_interface.network.private_ip_address
   }
+
   provisioner "remote-exec" {
     inline = [
       "sudo dnf install -y python3.12 python3.12-pip",
