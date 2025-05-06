@@ -7,7 +7,7 @@ resource "azurerm_public_ip" "publicip" {
 }
 
 # Network Interface
-resource "azurerm_network_interface" "network" {
+resource "azurerm_network_interface" "privateip" {
   name                = var.name
   location            = var.location
   resource_group_name = var.rg_name
@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "network" {
   ip_configuration {
     name                          = var.name
     subnet_id                     = var.ip_configuration_subnet_id
-    public_ip_address_id          = azurerm_public_ip.publicip.id
+    public_ip_address_id          = azurerm_public_ip.privateip.id
     private_ip_address_allocation = "Dynamic"
   }
 }
@@ -25,7 +25,7 @@ resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
   location                      = var.location
   resource_group_name           = var.rg_name
-  network_interface_ids         = [azurerm_network_interface.network.id]
+  network_interface_ids         = [azurerm_network_interface.privateip.id]
   vm_size                       = "Standard_B2s"
   delete_os_disk_on_termination = true
 
@@ -54,7 +54,7 @@ resource "azurerm_virtual_machine" "vm" {
     type     = "ssh"
     user     = "devops18"
     password = "Passw0rd@1234"
-    host     = azurerm_public_ip.publicip.ip_address
+    host     = azurerm_public_ip.privateip.id
   }
 
   provisioner "remote-exec" {
