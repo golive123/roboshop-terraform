@@ -82,12 +82,12 @@ resource "azurerm_virtual_machine" "vm" {
     host     = azurerm_public_ip.publicip.ip_address
   }
 
-  provisioner "remote-exec" {
-    inline = [
-      "sudo dnf install -y python3.12 python3.12-pip",
-      "sudo pip3.12 install ansible",
-      "ansible pull -i localhost, -U 'https://github.com/udayacharagundla/roboshop-ansible.git' roboshop.yml -e app_name=${var.name}"
-    ]
-  }
+#   provisioner "remote-exec" {
+#     inline = [
+#       "sudo dnf install -y python3.12 python3.12-pip",
+#       "sudo pip3.12 install ansible",
+#       "ansible pull -i localhost, -U 'https://github.com/udayacharagundla/roboshop-ansible.git' roboshop.yml -e app_name=${var.name}"
+#     ]
+#   }
 }
 
