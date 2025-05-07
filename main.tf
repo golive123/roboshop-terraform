@@ -30,6 +30,7 @@ module "applications" {
   storage_image_reference_id = var.storage_image_reference_id
   ip_configuration_subnet_id = var.ip_configuration_subnet_id
   zone_name                  = var.zone_name
+  role_name                  = var.role_name[each.key]
 }
 
 # added in variables section and used for_each and for_key option syntax
