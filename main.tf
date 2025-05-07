@@ -1,12 +1,13 @@
- # module "frontend" {
- #  source                     = "./component"
- #  name                       = "frontend"
- #  location                   = "var.location"
- #  rg_name                    = "var.rg_name"
- #  storage_image_reference_id = "var.storage_image_reference_id"
- #  ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
- #  zone_name                  = "var.zone_name"
- # }
+ module "frontend" {
+  source                     = "./component"
+  name                       = "frontend"
+  location                   = "var.location"
+  rg_name                    = "var.rg_name"
+  storage_image_reference_id = "var.storage_image_reference_id"
+  ip_configuration_subnet_id = "var.ip_configuration_subnet_id"
+  zone_name                  = "var.zone_name"
+ }
+
  module "mongodb" {
    source                     = "./component"
    name                       = "mongodb"
