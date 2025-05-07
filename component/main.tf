@@ -50,7 +50,7 @@ resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
   location                      = var.location
   resource_group_name           = var.rg_name
-  network_interface_ids = [azurerm_network_interface.privateip.id]
+  network_interface_ids         = [azurerm_network_interface.privateip.id]
   vm_size                       = "Standard_B2s"
   delete_os_disk_on_termination = true
 
@@ -82,12 +82,11 @@ resource "azurerm_virtual_machine" "vm" {
     host     = azurerm_public_ip.publicip.ip_address
   }
 
-  # provisioner "remote-exec" {
-  #   inline = [
-  #     "sudo dnf update",
-  #     "sudo dnf install -y python3.12 python3.12-pip",
-  #     "sudo pip3.12 install ansible",
-  #     "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name}"
-  #   ]
-  # }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo dnf install -y python3.12 python3.12-pip",
+      "sudo pip3.12 install ansible",
+      "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name}"
+    ]
+  }
 }
