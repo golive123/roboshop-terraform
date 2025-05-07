@@ -27,7 +27,7 @@ resource "azurerm_network_security_group" "nsg" {
   resource_group_name = var.rg_name
 
   security_rule {
-    name                       = "SSH"
+    name                       = "golive_allowall"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
