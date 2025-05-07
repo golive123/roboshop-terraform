@@ -42,15 +42,15 @@ variable "applications" {
 
 variable "role_name" {
   default = {
-    catalogue = {}
-    cart = {}
-    user = {}
-    payment = {}
-    shipping = {}
-    frontend = {}
-    mongodb = {}
-    rabbitmq = {}
-    mysql    = {}
-    redis    = {}
+    catalogue = "catalogue-role"
+    cart      = "cart-role"
+    user      = "user-role"
+    payment   = "payment-role"
+    shipping  = "shipping-role"
+    frontend  = "frontend-role"
+    mongodb   = "mongodb-role"
+    rabbitmq  = "rabbitmq-role"
+    mysql     = "mysql-role"
+    redis     = "redis-role"
   }
 }
