@@ -90,5 +90,4 @@ resource "azurerm_virtual_machine" "vm" {
       "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name} -e role_name=frontend"
     ]
   }
-
 }

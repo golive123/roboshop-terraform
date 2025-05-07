@@ -38,5 +38,4 @@ variable "applications" {
     shipping = {}
     frontend = {}
   }
-
- }
+}
