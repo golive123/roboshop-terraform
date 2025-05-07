@@ -6,7 +6,7 @@ variable "zone_name" {
   default = "obiecard.com"
 }
 
-# added these details in data block,so in main.tf file change the location details as #location location=data.azurerm_resource_group.rg.location
+## added these details in data block,so in main.tf file change the location details as #location location=data.azurerm_resource_group.rg.location
 # and also remove information from component/main.tf and also remove location from variables section as well
 variable "location" {
    default = "UK West"
