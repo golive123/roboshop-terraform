@@ -20,28 +20,31 @@ resource "azurerm_network_interface" "privateip" {
   }
 }
 
-resource "azurerm_network_security_group" "nsg" {
-  name                = "allow-all"
-  location            = var.location
-  resource_group_name = var.rg_name
+# # Network Security Group
+# resource "azurerm_network_security_group" "nsg" {
+#   name                = "allow-all"
+#   location            = var.location
+#   resource_group_name = var.rg_name
+#
+#   security_rule {
+#     name                       = "golive_allowall"
+#     priority                   = 100
+#     direction                  = "Inbound"
+#     access                     = "Allow"
+#     protocol                   = "*"
+#     source_port_range          = "*"
+#     destination_port_range     = "*"
+#     source_address_prefix      = "*"
+#     destination_address_prefix = "*"
+#   }
+# }
 
-  security_rule {
-    name                       = "golive_allowall"
-    priority                   = 100
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "*"
-    source_port_range          = "*"
-    destination_port_range     = "*"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
-  }
+variable "network_security_group" {
+  default = ""
 }
-
-# Associate NSG with NIC
-resource "azurerm_network_interface_security_group_association" "nsg_assoc" {
+resource "azurerm_network_interface_security_group_association" "nsg-attach" {
   network_interface_id      = azurerm_network_interface.privateip.id
-  network_security_group_id = azurerm_network_security_group.nsg.id
+  network_security_group_id = var.network_security_group.id
 }
 
 # Virtual Machine
@@ -49,7 +52,7 @@ resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
   location                      = var.location
   resource_group_name           = var.rg_name
-  network_interface_ids = [azurerm_network_interface.privateip.id]
+  network_interface_ids         = [azurerm_network_interface.privateip.id]
   vm_size                       = "Standard_B2s"
   delete_os_disk_on_termination = true
 
@@ -83,11 +86,20 @@ resource "azurerm_virtual_machine" "vm" {
 
   provisioner "remote-exec" {
     inline = [
-      "export PATH=$PATH:/usr/local/bin", # Add to PATH
+      "export PATH=$PATH:/usr/local/bin",
       "sudo dnf install -y python3.12 python3.12-pip",
       "sudo pip3.12 install ansible",
       "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name}"
-      ]
+    ]
   }
 }
 
+# DNS A Record - Top Level Resource
+resource "azurerm_dns_a_record" "dns_record" {
+  name                = "${var.name}-dev"
+  zone_name           = "yourtherapist.in"
+  resource_group_name = var.rg_name
+  ttl                 = 3
+  #records            = [azurerm_public_ip.publicip.ip_address]
+  records             = [azurerm_network_interface.privateip.private_ip_address]
+}

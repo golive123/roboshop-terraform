@@ -17,6 +17,7 @@ module "databases" {
   rg_name                    = var.rg_name
   storage_image_reference_id = var.storage_image_reference_id
   ip_configuration_subnet_id = var.ip_configuration_subnet_id
+  network_security_group_id  = var.network_security_group_id
   zone_name                  = var.zone_name
 }
 
@@ -29,6 +30,7 @@ module "applications" {
   rg_name                    = var.rg_name
   storage_image_reference_id = var.storage_image_reference_id
   ip_configuration_subnet_id = var.ip_configuration_subnet_id
+  network_security_group_id  =  var.network_security_group_id
   zone_name                  = var.zone_name
 }
 

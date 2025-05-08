@@ -20,6 +20,10 @@ variable "storage_image_reference_id" {
   default = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Compute/images/terraform-test-image"
 }
 
+variable "network_security_group_id" {
+  default = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/networkSecurityGroups/allow-all"
+}
+
 variable "databases" {
   default = {
     mongodb = {}
@@ -42,17 +46,3 @@ variable "applications" {
 
 
 
-# variable "role_name" {
-#   default = {
-#     catalogue = "catalogue-role"
-#     cart      = "cart-role"
-#     user      = "user-role"
-#     payment   = "payment-role"
-#     shipping  = "shipping-role"
-#     frontend  = "frontend-role"
-#     mongodb   = "mongodb-role"
-#     rabbitmq  = "rabbitmq-role"
-#     mysql     = "mysql-role"
-#     redis     = "redis-role"
-#   }
-# }
