@@ -21,12 +21,10 @@ resource "azurerm_network_interface" "privateip" {
 }
 
 
-variable "network_security_group" {
-  default = ""
-}
+
 resource "azurerm_network_interface_security_group_association" "nsg-attach" {
   network_interface_id      = azurerm_network_interface.privateip.id
-  network_security_group_id = var.network_security_group
+  network_security_group_id = var.network_security_group_id
 }
 
 # Virtual Machine
