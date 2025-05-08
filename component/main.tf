@@ -21,12 +21,12 @@ resource "azurerm_network_interface" "privateip" {
 }
 
 resource "azurerm_network_security_group" "nsg" {
-  name                = "allowall"
+  name                = "allow-all"
   location            = var.location
   resource_group_name = var.rg_name
 
   security_rule {
-    name                       = "golive_allowall"
+    name                       = "golive.allowall"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
