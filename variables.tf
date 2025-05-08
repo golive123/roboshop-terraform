@@ -23,19 +23,19 @@ variable "storage_image_reference_id" {
 variable "databases" {
   default = {
     mongodb = {}
-    #rabbitmq = {}
-    #mysql    = {}
-    #redis    = {}
+    rabbitmq = {}
+    mysql    = {}
+    redis    = {}
   }
 }
 
 variable "applications" {
   default = {
-    #catalogue = {}
-    #cart = {}
-    #user = {}
-    #payment = {}
-    #shipping = {}
+    catalogue = {}
+    cart = {}
+    user = {}
+    payment = {}
+    shipping = {}
     frontend = {}
   }
 }
