@@ -28,7 +28,7 @@ variable "databases" {
   default = {
     mongodb = {}
     rabbitmq = {}
-    mysql    = {}
+    sql    = {}
     redis    = {}
   }
 }
