@@ -40,6 +40,12 @@ variable "applications" {
   }
 }
 
+variable "role_name" {
+  type    = list(string)
+  default = ["mongodb", "frontend", "mysql", "redis", "cart", "payment", "shipping", "user", "catalogue"]
+}
+
+
 # variable "role_name" {
 #   default = {
 #     catalogue = "catalogue-role"
