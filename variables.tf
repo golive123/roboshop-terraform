@@ -3,14 +3,14 @@ variable "ip_configuration_subnet_id" {
 }
 
 variable "zone_name" {
-  default = "obiecard.com"
+  default = "yourtherapist.in"
 }
 
 ## added these details in data block,so in main.tf file change the location details as #location location=data.azurerm_resource_group.rg.location
 # and also remove information from component/main.tf and also remove location from variables section as well
 variable "location" {
-   default = "UK West"
- }
+  default = "UK West"
+}
 
 variable "rg_name" {
   default = "golive"
@@ -23,19 +23,40 @@ variable "storage_image_reference_id" {
 variable "databases" {
   default = {
     mongodb = {}
-    rabbitmq = {}
-    mysql    = {}
-    redis    = {}
+    #rabbitmq = {}
+    #mysql    = {}
+    #redis    = {}
   }
 }
 
 variable "applications" {
   default = {
-    catalogue = {}
-    cart = {}
-    user = {}
-    payment = {}
-    shipping = {}
+    #catalogue = {}
+    #cart = {}
+    #user = {}
+    #payment = {}
+    #shipping = {}
     frontend = {}
   }
 }
+
+variable "role_name" {
+  type    = list(string)
+  default = ["mongodb", "frontend", "mysql", "redis", "cart", "payment", "shipping", "user", "catalogue"]
+}
+
+
+# variable "role_name" {
+#   default = {
+#     catalogue = "catalogue-role"
+#     cart      = "cart-role"
+#     user      = "user-role"
+#     payment   = "payment-role"
+#     shipping  = "shipping-role"
+#     frontend  = "frontend-role"
+#     mongodb   = "mongodb-role"
+#     rabbitmq  = "rabbitmq-role"
+#     mysql     = "mysql-role"
+#     redis     = "redis-role"
+#   }
+# }

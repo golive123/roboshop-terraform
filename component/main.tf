@@ -27,7 +27,7 @@ resource "azurerm_network_security_group" "nsg" {
   resource_group_name = var.rg_name
 
   security_rule {
-    name                       = "SSH"
+    name                       = "golive_allowall"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
@@ -50,7 +50,7 @@ resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
   location                      = var.location
   resource_group_name           = var.rg_name
-  network_interface_ids         = [azurerm_network_interface.privateip.id]
+  network_interface_ids = [azurerm_network_interface.privateip.id]
   vm_size                       = "Standard_B2s"
   delete_os_disk_on_termination = true
 
@@ -84,10 +84,11 @@ resource "azurerm_virtual_machine" "vm" {
 
   provisioner "remote-exec" {
     inline = [
-      "export PATH=$PATH:/usr/local/bin",  # Add to PATH
+      "export PATH=$PATH:/usr/local/bin", # Add to PATH
       "sudo dnf install -y python3.12 python3.12-pip",
       "sudo pip3.12 install ansible",
-      "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name} -e role_name=frontend"
-    ]
+      "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml roboshop.yml -e app_name=${var.name}"
+      ]
   }
 }
+
