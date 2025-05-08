@@ -20,31 +20,13 @@ resource "azurerm_network_interface" "privateip" {
   }
 }
 
-# # Network Security Group
-# resource "azurerm_network_security_group" "nsg" {
-#   name                = "allow-all"
-#   location            = var.location
-#   resource_group_name = var.rg_name
-#
-#   security_rule {
-#     name                       = "golive_allowall"
-#     priority                   = 100
-#     direction                  = "Inbound"
-#     access                     = "Allow"
-#     protocol                   = "*"
-#     source_port_range          = "*"
-#     destination_port_range     = "*"
-#     source_address_prefix      = "*"
-#     destination_address_prefix = "*"
-#   }
-# }
 
 variable "network_security_group" {
   default = ""
 }
 resource "azurerm_network_interface_security_group_association" "nsg-attach" {
   network_interface_id      = azurerm_network_interface.privateip.id
-  network_security_group_id = var.network_security_group.id
+  network_security_group_id = var.network_security_group
 }
 
 # Virtual Machine
