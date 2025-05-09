@@ -35,12 +35,12 @@ variable "databases" {
 
 variable "applications" {
   default = {
-    catalogue = {}
-    cart = {}
-    user = {}
-    payment = {}
-    shipping = {}
     frontend-robo = {}
+    catalogue = {}
+    user = {}
+    cart = {}
+    shipping = {}
+    payment = {}
   }
 }
 
