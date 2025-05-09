@@ -40,7 +40,7 @@ variable "applications" {
     user = {}
     payment = {}
     shipping = {}
-    frontend-new = {}
+    frontend-robo = {}
   }
 }
 
