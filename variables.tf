@@ -1,13 +1,14 @@
 variable "ip_configuration_subnet_id" {}
 variable "zone_name" {}
-variable "location" {}
 variable "storage_image_reference_id" {}
 variable "network_security_group_id" {}
 variable "databases" {}
 variable "applications" {}
-variable "name" {}
+variable "rg_name" {}
+variable "rg_location" {}
 variable "env" {}
 variable "dns_record_rg_name" {}
+
 
 # variable "ip_configuration_subnet_id" {
 #   default = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/virtualNetworks/golive-vnet/subnets/default"

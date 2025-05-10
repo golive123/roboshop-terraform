@@ -38,7 +38,7 @@ applications = {
         rgname = "ukwest"
     }
   }
-rg_name  = {
+  rg_name  = {
     ukwest = {
         location = "UK West"
     }

@@ -1,7 +1,7 @@
 # Public IP
 resource "azurerm_public_ip" "publicip" {
   name                = var.name
-  location            = var.location
+  location            = var.rg_location
   resource_group_name = var.rg_name
   allocation_method   = "Static"
 }
@@ -9,7 +9,7 @@ resource "azurerm_public_ip" "publicip" {
 # Network Interface
 resource "azurerm_network_interface" "privateip" {
   name                = var.name
-  location            = var.location
+  location            = var.rg_location
   resource_group_name = var.rg_name
 
   ip_configuration {
@@ -28,7 +28,7 @@ resource "azurerm_network_interface_security_group_association" "nsg-attach" {
 # Virtual Machine
 resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
-  location                      = var.location
+  location                      = var.rg_location
   resource_group_name           = var.rg_name
   network_interface_ids         = [azurerm_network_interface.privateip.id]
   vm_size                       = "Standard_B2s"
