@@ -8,13 +8,14 @@ module "resource-group" {
 module "databases" {
   for_each                   = var.databases
   source                     = "./modules/vm"
+  ip_configuration_subnet_id = var.ip_configuration_subnet_id
   name                       = each.key
   rg_name                    = module.resource-group[each.value["rgname"]].name
-  location                   = module.resource-group[each.value["rgname"]].location
+  rg_location                = module.resource-group[each.value["rgname"]].location
   storage_image_reference_id = var.storage_image_reference_id
-  ip_configuration_subnet_id = var.ip_configuration_subnet_id
-  network_security_group_id  = var.network_security_group_id
   zone_name                  = var.zone_name
+  network_security_group_id  = var.network_security_group_id
+  dns_record_rg_name         = var.dns_record_rg_name
 }
 
 # module "applications" {
