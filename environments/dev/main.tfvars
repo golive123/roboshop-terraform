@@ -6,36 +6,36 @@ storage_image_reference_id = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f65
 network_security_group_id  = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/networkSecurityGroups/allow-all"
 databases = {
     mongodb = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
     rabbitmq = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
     mysql    = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
     redis    = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
   }
 applications = {
     frontend-robo = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
     catalogue = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
     user = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
     cart = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
     shipping = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
     payment = {
-        rgname = "ukwest-dev"
+        rgname = "ukwest"
     }
   }
 rg_name  = {
