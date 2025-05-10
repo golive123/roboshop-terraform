@@ -11,7 +11,7 @@ module "databases" {
   ip_configuration_subnet_id = var.ip_configuration_subnet_id
   name                       = each.key
   rg_name                    = module.resource-group[each.value["rgname"]].name
-  location                   = module.resource-group[each.value["rgname"]].location
+  rg_location                = module.resource-group[each.value["rgname"]].location
   storage_image_reference_id = var.storage_image_reference_id
   zone_name                  = var.zone_name
   network_security_group_id  = var.network_security_group_id
