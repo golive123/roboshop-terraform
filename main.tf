@@ -1,157 +1,34 @@
-# module "frontend" {
-#   source                     = "./component"
-#   name                       = "frontend"
-#   location                   = var.location
-#   rg_name                    = var.rg_name
-#   storage_image_reference_id = var.storage_image_reference_id
-#   ip_configuration_subnet_id = var.ip_configuration_subnet_id
-#   zone_name                  = var.zone_name
-# }
-
+module "resource-group" {
+  for_each = var.rg_name
+  source = "modules/resource-group"
+  name   = "${each.key}-${var.env}"
+  location= each.value["location"]
+}
 
 module "databases" {
   for_each                   = var.databases
-  source                     = "./component"
-  location                   = var.location
+  source                     = "./modules/vm"
   name                       = each.key
-  rg_name                    = var.rg_name
+  rg_name                    = module.resource-group[each.value["rgname"]].name
+  location                   = module.resource-group[each.value["rgname"]].location
   storage_image_reference_id = var.storage_image_reference_id
   ip_configuration_subnet_id = var.ip_configuration_subnet_id
   network_security_group_id  = var.network_security_group_id
   zone_name                  = var.zone_name
 }
 
-module "applications" {
-  depends_on                 = [ module.databases ]
-  for_each                   = var.applications
-  source                     = "./component"
-  name                       = each.key
-  location                   = var.location
-  rg_name                    = var.rg_name
-  storage_image_reference_id = var.storage_image_reference_id
-  ip_configuration_subnet_id = var.ip_configuration_subnet_id
-  network_security_group_id  =  var.network_security_group_id
-  zone_name                  = var.zone_name
-}
-
-# added in variables section and used for_each and for_key option syntax
-
-# module "databases" {
-#   for_each                   = var.databases
-#   source                     = "./component"
-#   location                   = var.location
-#   name                       = each.key
-#   rg_name                    = var.rg_name
-#   storage_image_reference_id = var.storage_image_reference_id
-#   ip_configuration_subnet_id = var.ip_configuration_subnet_id
-#   zone_name                  = var.zone_name
-# }
-#
 # module "applications" {
 #   depends_on                 = [ module.databases ]
 #   for_each                   = var.applications
-#   source                     = "./component"
-#   name                       = "each.key"
+#   source                     = "./modules/vm"
+#   name                       = each.key
 #   location                   = var.location
 #   rg_name                    = var.rg_name
 #   storage_image_reference_id = var.storage_image_reference_id
 #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
+#   network_security_group_id  =  var.network_security_group_id
 #   zone_name                  = var.zone_name
 # }
-
-
-
-#to test
- #  module "mongodb" {
- #   source                     = "./component"
- #   name                       = "mongodb"
- #    location                   = var.location
- #    rg_name                    = var.rg_name
- #    storage_image_reference_id = var.storage_image_reference_id
- #    ip_configuration_subnet_id = var.ip_configuration_subnet_id
- #    zone_name                  = var.zone_name
- #  }
- #
- # module "redis" {
- #   source                     = "./component"
- #   name                       = "redis"
- #   location                   = var.location
- #   rg_name                    = var.rg_name
- #   storage_image_reference_id = var.storage_image_reference_id
- #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
- #   zone_name                  = var.zone_name
- # }
- #
- # module "catalogue" {
- #   source                     = "./component"
- #   name                       = "catalogue"
- #   location                   = var.location
- #   rg_name                    = var.rg_name
- #   storage_image_reference_id = var.storage_image_reference_id
- #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
- #   zone_name                  = var.zone_name
- # }
- #
- # module "mysql" {
- #   source                     = "./component"
- #   name                       = "mysql"
- #   location                   = var.location
- #   rg_name                    = var.rg_name
- #   storage_image_reference_id = var.storage_image_reference_id
- #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
- #   zone_name                  = var.zone_name
- # }
- #
- # module "user" {
- #   source                     = "./component"
- #   name                       = "user"
- #   location                   = var.location
- #   rg_name                    = var.rg_name
- #   storage_image_reference_id = var.storage_image_reference_id
- #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
- #   zone_name                  = var.zone_name
- # }
- #
- # module "cart" {
- #   source                     = "./component"
- #   name                       = "cart"
- #   location                   = var.location
- #   rg_name                    = var.rg_name
- #   storage_image_reference_id = var.storage_image_reference_id
- #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
- #   zone_name                  = var.zone_name
- # }
- #
- # module "rabbitmq" {
- #   source                     = "./component"
- #   name                       = "rabbitmq"
- #   location                   = var.location
- #   rg_name                    = var.rg_name
- #   storage_image_reference_id = var.storage_image_reference_id
- #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
- #   zone_name                  = var.zone_name
- # }
- #
- # module "shipping" {
- #   source                     = "./component"
- #   name                       = "shipping"
- #   location                   = var.location
- #   rg_name                    = var.rg_name
- #   storage_image_reference_id = var.storage_image_reference_id
- #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
- #   zone_name                  = var.zone_name
- # }
- #
- # module "payment" {
- #   source                     = "./component"
- #   name                       = "payment"
- #   location                   = var.location
- #   rg_name                    = var.rg_name
- #   storage_image_reference_id = var.storage_image_reference_id
- #   ip_configuration_subnet_id = var.ip_configuration_subnet_id
- #   zone_name                  = var.zone_name
- # }
-
 
 
 
