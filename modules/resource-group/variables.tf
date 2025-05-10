@@ -1,2 +1,2 @@
-variable "location" {}
 variable "name" {}
+variable "location" {}
