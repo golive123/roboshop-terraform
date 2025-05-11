@@ -7,3 +7,4 @@ output "id" {
 output "location" {
   value = azurerm_resource_group.main.location
 }
+#
