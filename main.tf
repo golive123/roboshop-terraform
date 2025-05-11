@@ -17,7 +17,7 @@ module "databases" {
   network_security_group_id  = var.network_security_group_id
   dns_record_rg_name         = var.dns_record_rg_name
 }
-
+#
 # module "applications" {
 #   depends_on                 = [ module.databases ]
 #   for_each                   = var.applications
