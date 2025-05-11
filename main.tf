@@ -29,6 +29,7 @@ module "applications" {
   ip_configuration_subnet_id = var.ip_configuration_subnet_id
   network_security_group_id  =  var.network_security_group_id
   zone_name                  = var.zone_name
+  dns_record_rg_name         = var.dns_record_rg_name
 }
 
 
