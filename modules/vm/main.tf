@@ -69,7 +69,7 @@ resource "azurerm_virtual_machine" "vm" {
     inline = [
       # "echo ok"
        "export PATH=$PATH:/usr/local/bin",
-       "sudo dnf install -y python3.12 python3.12-pip",
+       "sudo dnf install -y python3.12 python3.12-pip hvac",
        "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name} -e token=${var.token}"
     ]
   }
