@@ -51,7 +51,7 @@ resource "azurerm_virtual_machine" "vm" {
   os_profile {
     computer_name  = var.name
     admin_username = data.vault_generic_secret.ssh.data["username"]
-    admin_password = data.vault_generic_secret.ssh.data["password"]
+    admin_password = data.vault_generic_secret.ssh.data["username"]
   }
 
   os_profile_linux_config {
@@ -64,6 +64,7 @@ resource "azurerm_virtual_machine" "vm" {
     password = data.vault_generic_secret.ssh.data["password"]
     host     = azurerm_public_ip.publicip.ip_address
   }
+
 
   provisioner "remote-exec" {
     inline = [
