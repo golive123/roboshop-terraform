@@ -22,9 +22,9 @@ applications = {
     frontend-robo = {
         rgname = "ukwest"
     }
-    # catalogue = {
-    #     rgname = "ukwest"
-    # }
+    catalogue = {
+         rgname = "ukwest"
+    }
     # user = {
     #     rgname = "ukwest"
     # }
