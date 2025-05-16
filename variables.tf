@@ -2,6 +2,9 @@ variable "ip_configuration_subnet_id" {
   default = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/virtualNetworks/golive-vnet/subnets/default"
 }
 
+variable "token" {
+  default = "hvs.vDmeXxoN570Y46tfqceaShiB"
+}
 variable "zone_name" {
   default = "yourtherapist.in"
 }
@@ -40,10 +43,10 @@ variable "applications" {
   }
 }
 
-variable "role_name" {
-  type    = list(string)
-  default = ["mongodb", "frontend", "mysql", "redis", "cart", "payment", "shipping", "user", "catalogue"]
-}
+# variable "role_name" {
+#   type    = list(string)
+#   default = ["mongodb", "frontend", "mysql", "redis", "cart", "payment", "shipping", "user", "catalogue"]
+# }
 
 
 # variable "role_name" {
