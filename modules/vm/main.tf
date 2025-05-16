@@ -26,9 +26,9 @@ resource "azurerm_network_interface_security_group_association" "nsg-attach" {
 }
 
 # Virtual Machine
-variable "token" {
-  default = "hvs.vDmeXxoN570Y46tfqceaShiB"
-}
+# variable "token" {
+#   default = "hvs.vDmeXxoN570Y46tfqceaShiB"
+# }
 
 resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
