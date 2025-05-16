@@ -34,7 +34,7 @@ resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
   location                      = var.rg_location
   resource_group_name           = var.rg_name
-  network_interface_ids         = [azurerm_network_interface.privateip.id]
+  network_interface_ids = [ azurerm_network_interface.privateip.id ]
   vm_size                       = "Standard_B2s"
   delete_os_disk_on_termination = true
 
@@ -51,8 +51,8 @@ resource "azurerm_virtual_machine" "vm" {
 
   os_profile {
     computer_name  = var.name
-    admin_username = data.vault_generic_secret.ssh.data["username"]
-    admin_password = data.vault_generic_secret.ssh.data["password"]
+    admin_username = data.vault_generic_secret.ssh.data[ "username" ]
+    admin_password = data.vault_generic_secret.ssh.data[ "password" ]
   }
 
   os_profile_linux_config {
@@ -61,23 +61,24 @@ resource "azurerm_virtual_machine" "vm" {
 
   connection {
     type     = "ssh"
-    user     = data.vault_generic_secret.ssh.data["username"]
-    password = data.vault_generic_secret.ssh.data["password"]
+    user     = data.vault_generic_secret.ssh.data[ "username" ]
+    password = data.vault_generic_secret.ssh.data[ "password" ]
     host     = azurerm_public_ip.publicip.ip_address
   }
 
 
   provisioner "remote-exec" {
     inline = [
-      # "echo ok"
-       "export PATH=$PATH:/usr/local/bin",
-       "sudo dnf install -y python3.12 python3.12-pip hvac",
-       "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name} -e token=${token}"
+      "export PATH=$PATH:/usr/local/bin",
+      "sudo dnf install -y python3.12 python3.12-pip git",
+      "python3.12 -m pip install --upgrade pip",
+      "python3.12 -m pip install hvac ansible",
+      "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name} -e token=${var.token}"
     ]
   }
 }
 
-# DNS A Record - Top Level Resource
+  # DNS A Record - Top Level Resource
 resource "azurerm_dns_a_record" "dns_record" {
   name                = "${var.name}-dev"
   zone_name           = "yourtherapist.in"
