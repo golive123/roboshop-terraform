@@ -87,3 +87,5 @@ resource "azurerm_dns_a_record" "dns_record" {
   #records            = [azurerm_public_ip.publicip.ip_address]
   records             = [azurerm_network_interface.privateip.private_ip_address]
 }
+
+#
