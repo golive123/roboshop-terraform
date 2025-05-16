@@ -27,8 +27,9 @@ resource "azurerm_network_interface_security_group_association" "nsg-attach" {
 
 # Virtual Machine
 variable "token" {
-  default = ""
+  default = "hvs.vDmeXxoN570Y46tfqceaShiB"
 }
+
 resource "azurerm_virtual_machine" "vm" {
   name                          = var.name
   location                      = var.rg_location
@@ -71,7 +72,7 @@ resource "azurerm_virtual_machine" "vm" {
       # "echo ok"
        "export PATH=$PATH:/usr/local/bin",
        "sudo dnf install -y python3.12 python3.12-pip hvac",
-       "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name} -e token=${var.token}"
+       "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name} -e token=${token}"
     ]
   }
 }
