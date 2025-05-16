@@ -73,7 +73,7 @@ resource "azurerm_virtual_machine" "vm" {
       "sudo dnf install -y python3.12 python3.12-pip git",
       "python3.12 -m pip install --upgrade pip",
       "python3.12 -m pip install hvac ansible",
-      "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name} -e token=${var.token}"
+      "ansible-pull -i localhost, -U https://github.com/udayacharagundla/roboshop-ansible.git roboshop.yml -e app_name=${var.name} -e env=dev -e token=${var.token}"
     ]
   }
 }
