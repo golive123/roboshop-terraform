@@ -8,15 +8,15 @@ databases = {
     mongodb = {
         rgname = "ukwest"
      }
-    rabbitmq = {
-        rgname = "ukwest"
-    }
-    mysql    = {
-        rgname = "ukwest"
-    }
-    redis    = {
-        rgname = "ukwest"
-    }
+    # rabbitmq = {
+    #     rgname = "ukwest"
+    # }
+    # mysql    = {
+    #     rgname = "ukwest"
+    # }
+    # redis    = {
+    #     rgname = "ukwest"
+    # }
    }
 applications = {
     frontend-robo = {
@@ -25,18 +25,18 @@ applications = {
     catalogue = {
          rgname = "ukwest"
     }
-    user = {
-        rgname = "ukwest"
-    }
-    cart = {
-        rgname = "ukwest"
-    }
-    shipping = {
-        rgname = "ukwest"
-    }
-    payment = {
-        rgname = "ukwest"
-    }
+    # user = {
+    #     rgname = "ukwest"
+    # }
+    # cart = {
+    #     rgname = "ukwest"
+    # }
+    # shipping = {
+    #     rgname = "ukwest"
+    # }
+    # payment = {
+    #     rgname = "ukwest"
+    # }
   }
   rg_name  = {
     ukwest = {
