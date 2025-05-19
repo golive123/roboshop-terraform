@@ -45,7 +45,7 @@ applications = {
 }
 
   aks = {
-    main-dev {
+    main-dev = {
      rgname = "ukwest"
   }
-  }
+}
