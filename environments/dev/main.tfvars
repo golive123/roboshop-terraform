@@ -19,11 +19,11 @@ databases = {
     # }
    }
 applications = {
-    frontend-robo = {
-        rgname = "ukwest"
-    }
-    catalogue = {
-         rgname = "ukwest"
+    # frontend-robo = {
+    #     rgname = "ukwest"
+    # }
+    # catalogue = {
+    #      rgname = "ukwest"
     }
     # user = {
     #     rgname = "ukwest"
