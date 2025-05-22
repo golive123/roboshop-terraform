@@ -50,11 +50,11 @@ resource "azurerm_virtual_machine" "vm" {
   }
 
   os_profile {
-    computer_name  = var.name
-    # admin_username = data.vault_generic_secret.ssh.data[ "username" ]
-    # admin_password = data.vault_generic_secret.ssh.data[ "password" ]
-      admin_username = "devops18"
-      admin_password = "Passw0rd@1234"
+     computer_name  = var.name
+     admin_username = data.vault_generic_secret.ssh.data[ "username" ]
+     admin_password = data.vault_generic_secret.ssh.data[ "password" ]
+     #admin_username = "devops18"
+     #admin_password = "Passw0rd@1234"
   }
 
   os_profile_linux_config {
