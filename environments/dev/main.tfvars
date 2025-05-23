@@ -18,7 +18,7 @@ databases = {
     #     rgname = "ukwest"
     # }
    #}
-applications = {
+#applications = {
     # frontend-robo = {
     #     rgname = "ukwest"
     # }
@@ -37,7 +37,7 @@ applications = {
     # payment = {
     #     rgname = "ukwest"
     # }
-  }
+  #}
   rg_name  = {
     ukwest = {
         location = "UK West"
