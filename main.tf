@@ -35,13 +35,13 @@ module "databases" {
 #   token                      = var.token
 #   env                        = var.env
 # }
-# module "aks" {
-#   for_each = var.aks
-#   source = "./modules/aks"
-#   name   = each.key
-#   rg_name                    = module.resource-group[each.value["rgname"]].name
-#   rg_location                = module.resource-group[each.value["rgname"]].location
-# }
+module "aks" {
+  for_each = var.aks
+  source = "./modules/aks"
+  name   = each.key
+  rg_name                    = module.resource-group[each.value["rgname"]].name
+  rg_location                = module.resource-group[each.value["rgname"]].location
+}
 
 
 
