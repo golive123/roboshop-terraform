@@ -15,7 +15,11 @@ resource "azurerm_kubernetes_cluster" "main" {
     subnet_name = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/virtualNetworks/golive-vnet/subnets/default"
   }
 
-
+  network_profile {
+    network_plugin = "azure"
+    service_cidr   = "10.100.0.0/24"
+    dns_service_ip = "10.100.0.10"
+  }
   identity {
     type = "SystemAssigned"
   }
