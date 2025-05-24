@@ -1,15 +1,16 @@
-
-provider "kubernetes" {
-  config_path = "~/.kube/config"
-}
-
-provider "helm" {
-  kubernetes {
-    config_path = "~/.kube/config"
-  }
-}
+#
+# provider "kubernetes" {
+#   config_path = "~/.kube/config"
+# }
+#
+# provider "helm" {
+#   kubernetes {
+#     config_path = "~/.kube/config"
+#   }
+# }
 resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
+    command = "export KUBECONFIG=~/.kube/config"
     command = "az aks get-credentials --name ${var.name} --resource-group ${var.rg_name} --overwrite-existing --file kubeconfig-${var.env}.yaml"
   }
 }
