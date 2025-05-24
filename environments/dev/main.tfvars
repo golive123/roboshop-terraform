@@ -46,6 +46,7 @@ databases = {
 
   aks = {
     main-dev = {
-     rgname = "ukwest"
+     #rgname = "ukwest"
+     rgname = "ukwest-dev"
   }
 }
