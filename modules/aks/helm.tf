@@ -1,6 +1,6 @@
 resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
-    command = "az aks get-credentials --name ${var.name} --resource-group ${var.rg_name} --overwrite-existing --file kubeconfig-${var.env}.yaml"
+    command = "az aks get-credentials --resource-group ukwest-dev --name main-dev --overwrite-existing"
   }
 }
 
