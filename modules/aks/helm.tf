@@ -4,11 +4,11 @@ resource "null_resource" "kubeconfig" {
   }
 }
 
-provider "helm" {
-  kubernetes {
-    config_path = "${path.module}/kubeconfig-${var.env}.yaml"
-  }
-}
+# provider "helm" {
+#   kubernetes {
+#     config_path = "${path.module}/kubeconfig-${var.env}.yaml"
+#   }
+# }
 
 # resource "null_resource" "kubeconfig" {
 #   provisioner "local-exec" {
