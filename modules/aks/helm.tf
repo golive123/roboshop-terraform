@@ -4,11 +4,11 @@ resource "null_resource" "kubeconfig" {
   command = "az aks get-credentials --name ${var.name} --resource-group ${var.rg_name} --overwrite-existing --file kubeconfig-${var.env}.yaml"
   }
 }
-resource "kubernetes_namespace" "devops" {
-  metadata {
-    name = "devops"
-  }
-}
+# resource "kubernetes_namespace" "devops" {
+#   metadata {
+#     name = "devops"
+#   }
+# }
 resource "helm_release" "external-secrets" {
   depends_on = [
     null_resource.kubeconfig
