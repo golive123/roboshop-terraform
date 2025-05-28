@@ -47,5 +47,21 @@ databases = {
   aks = {
     main-dev = {
      rgname = "ukwest"
-     }
-}
+        default_node_pool = {
+        nodes   = 1
+        vm_size = "standard_a2_v2"
+      }
+      app_node_pool = {
+        one = {
+          max_count            = 10
+          min_count            = 2
+          vm_size              = "standard_a2_v2"
+          auto_scaling_enabled = true
+          node_labels = {
+            "project/name" = "roboshop"
+          }
+        }
+      }
+
+    }
+  }
