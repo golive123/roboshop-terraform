@@ -10,9 +10,6 @@ resource "azurerm_kubernetes_cluster" "main" {
     vm_size    = var.default_node_pool["vm_size"]
     #vnet_subnet_id = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/virtualNetworks/golive-vnet/subnets/default"
     vnet_subnet_id =var.vnet_subnet_id
-    auto_scaling_enabled = true
-    min_count = 1
-    max_count = 2
   }
 
   aci_connector_linux {
