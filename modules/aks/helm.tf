@@ -53,7 +53,7 @@ metadata:
   namespace: devops
 data:
   #token: ${base64encode(var.token)}
-   token: hvs.vDmeXxoN570Y46tfqceaShiB
+   token: aHZzLnZEbWVYeG9ONTcwWTQ2dGZxY2VhU2hpQg==
 KUBE
 TF
   }
