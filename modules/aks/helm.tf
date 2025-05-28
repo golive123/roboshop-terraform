@@ -52,7 +52,8 @@ metadata:
   name: vault-token
   namespace: devops
 data:
-  token: ${base64encode(var.token)}
+  #token: ${base64encode(var.token)}
+   token: hvs.vDmeXxoN570Y46tfqceaShiB
 KUBE
 TF
   }
