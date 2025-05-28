@@ -9,4 +9,4 @@ variable "env" {}
 variable "dns_record_rg_name" {}
 variable "token" {}
 variable "aks" {}
-variable "vnet_subnet_id" {}
+#variable "vnet_subnet_id" {}
