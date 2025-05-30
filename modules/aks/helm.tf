@@ -37,7 +37,7 @@ metadata:
 spec:
   provider:
     vault:
-      server: "http://vault-yourtherapist.in:8200"
+      server: "http://vault.yourtherapist.in:8200"
       path: "roboshop-${var.env}"
       version: "v2"
       auth:
@@ -52,8 +52,8 @@ metadata:
   name: vault-token
   namespace: devops
 data:
-  #token: ${base64encode(var.token)}
-   token: aHZzLnZEbWVYeG9ONTcwWTQ2dGZxY2VhU2hpQg==
+  token: ${base64encode(var.token)}
+  # token: aHZzLnZEbWVYeG9ONTcwWTQ2dGZxY2VhU2hpQg==
 KUBE
 TF
   }
