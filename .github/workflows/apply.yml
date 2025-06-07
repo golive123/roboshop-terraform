@@ -11,23 +11,23 @@ jobs:
         run:
           make dev-apply token=${vault_token}
 
-#      - uses: actions/checkout@v4
-#      - name: Import Secrets
-#        id: import-secrets
-#        uses: hashicorp/vault-action@v2
-#        with:
-#          url: http://vault.yourtherapist.in/:8200/
-#          token: ${{ secrets.vault_token }}
-#          secrets: |
-#            roboshop-infra/data/azure-sp ARM_CLIENT_ID | ARM_CLIENT_ID ;
-#            roboshop-infra/data/azure-sp ARM_CLIENT_SECRET | ARM_CLIENT_SECRET ;
-#            roboshop-infra/data/azure-sp ARM_TENANT_ID | ARM_TENANT_ID ;
-#            roboshop-infra/data/azure-sp ARM_SUBSCRIPTION_ID | ARM_SUBSCRIPTION_ID ;
-#      - name: Terraform Apply
-#        run: |
-#          export ARM_CLIENT_ID="${{ env.ARM_CLIENT_ID }}"
-#          export ARM_CLIENT_SECRET="${{ env.ARM_CLIENT_SECRET }}"
-#          export ARM_TENANT_ID="${{ env.ARM_TENANT_ID }}"
-#          export ARM_SUBSCRIPTION_ID="${{ env.ARM_SUBSCRIPTION_ID }}"
-#          az login --service-principal --username $ARM_CLIENT_ID --password $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
-#          az aks get-credentials --name main-dev --resource-group ukwest-dev --overwrite-existing
+      - uses: actions/checkout@v4
+      - name: Import Secrets
+        id: import-secrets
+        uses: hashicorp/vault-action@v2
+        with:
+          url: http://vault.yourtherapist.in/:8200/
+          token: ${{ secrets.vault_token }}
+          secrets: |
+            roboshop-infra/data/azure-sp ARM_CLIENT_ID | ARM_CLIENT_ID ;
+            roboshop-infra/data/azure-sp ARM_CLIENT_SECRET | ARM_CLIENT_SECRET ;
+            roboshop-infra/data/azure-sp ARM_TENANT_ID | ARM_TENANT_ID ;
+            roboshop-infra/data/azure-sp ARM_SUBSCRIPTION_ID | ARM_SUBSCRIPTION_ID ;
+      - name: Terraform Apply
+        run: |
+          export ARM_CLIENT_ID="${{ env.ARM_CLIENT_ID }}"
+          export ARM_CLIENT_SECRET="${{ env.ARM_CLIENT_SECRET }}"
+          export ARM_TENANT_ID="${{ env.ARM_TENANT_ID }}"
+          export ARM_SUBSCRIPTION_ID="${{ env.ARM_SUBSCRIPTION_ID }}"
+          az login --service-principal --username $ARM_CLIENT_ID --password $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
+          az aks get-credentials --name main-dev --resource-group ukwest-dev --overwrite-existing
