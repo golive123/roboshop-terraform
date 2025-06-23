@@ -1,5 +1,5 @@
 dev-init:
-	az aks get-credentials --name main-dev --resource-group golive --overwrite-existing
+	az aks get-credentials --name main-dev --resource-group ukwest-dev --overwrite-existing
 
 dev-apply: dev-init
 	git pull
