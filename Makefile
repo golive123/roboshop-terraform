@@ -1,4 +1,7 @@
-dev-apply:
+dev-init:
+	az aks get-credentials --name main-dev --resource-group golive --overwrite-existing
+
+dev-apply: dev-init
 	git pull
 	rm -rf .terraform/terraform.tfstate
 	terraform init -backend-config=environments/dev/state.tfvars
