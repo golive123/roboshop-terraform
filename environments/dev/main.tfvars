@@ -17,7 +17,7 @@ network_security_group_id  = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f65
 #   redis    = {
 #     rgname = "ukwest"
 #   }
-}
+#}
 #applications = {
     # frontend-robo = {
     #     rgname = "ukwest"
