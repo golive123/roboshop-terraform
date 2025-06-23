@@ -3,7 +3,8 @@ name: Dev - Destroy
 on: [workflow_dispatch]
 jobs:
   TerraformDestroy:
-    runs-on: self-hosted
+#    runs-on: self-hosted
+    runs-on: ubuntu-latest
     env:
       vault_token: ${{ secrets.vault_token }}
     steps:
