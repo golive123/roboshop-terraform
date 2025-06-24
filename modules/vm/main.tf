@@ -41,7 +41,7 @@ resource "azurerm_virtual_machine" "vm" {
   storage_image_reference {
     id = var.storage_image_reference_id
   }
-
+  #source_image_id = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Compute/images/vault-image"
   storage_os_disk {
     name              = "${var.name}-disk"
     caching           = "ReadWrite"
