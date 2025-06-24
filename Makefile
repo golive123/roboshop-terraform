@@ -1,7 +1,7 @@
-dev-init:
-	az aks get-credentials --name main-dev --resource-group ukwest-dev --overwrite-existing
-
-dev-apply: dev-init
+#dev-init:
+#	az aks get-credentials --name main-dev --resource-group ukwest-dev --overwrite-existing
+#dev-apply: dev-init
+dev-apply:
 	git pull
 	rm -rf .terraform/terraform.tfstate
 	terraform init -backend-config=environments/dev/state.tfvars
