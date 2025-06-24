@@ -41,3 +41,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "main" {
   node_labels                 = each.value[ "node_labels" ]
   temporary_name_for_rotation = "${each.key}temp"
 }
+
+output "aks" {
+  value = "azurerm_kubernetes_cluster.main"
+}

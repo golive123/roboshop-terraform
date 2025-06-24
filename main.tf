@@ -47,6 +47,15 @@ module "aks" {
   app_node_pool     = each.value[ "app_node_pool" ]
   vnet_subnet_id    = var.ip_configuration_subnet_id
 }
+output "aks" {
+  value = azurerm_kubernetes_cluster.main.kubelet_identity[0].object_id
+}
+
+resource "azurerm_role_assignment" "aks-to-acr" {
+  scope                = data.azurerm_container_registry.main.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_kubernetes_cluster.main.kubelet_identity[0].object_id
+}
 
 
 
