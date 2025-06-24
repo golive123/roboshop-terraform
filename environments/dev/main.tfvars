@@ -9,15 +9,15 @@ databases = {
   mongodb = {
     rgname = "ukwest"
   }
-  # rabbitmq = {
-  #   rgname = "ukwest"
-  # }
-  # mysql    = {
-  #   rgname = "ukwest"
-  # }
-  # redis    = {
-  #   rgname = "ukwest"
-  # }
+  rabbitmq = {
+    rgname = "ukwest"
+  }
+  mysql    = {
+    rgname = "ukwest"
+  }
+  redis    = {
+    rgname = "ukwest"
+  }
 }
 #applications = {
     # frontend-robo = {
