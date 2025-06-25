@@ -18,7 +18,7 @@ databases = {
 #   redis    = {
 #     rgname = "ukwest"
 #   }
-# }
+}
 #applications = {
     # frontend-robo = {
     #     rgname = "ukwest"
