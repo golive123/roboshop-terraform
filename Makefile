@@ -11,7 +11,7 @@ dev-destroy:
 	git pull
 	rm -rf .terraform/terraform.tfstate
 	terraform init -backend-config=environments/dev/state.tfvars
-	terraform destroy -auto-approve -var-file environments/dev/main.tfvars -var token=$(token)
+	terraform destroy -auto-approve -var-file environments/dev/main.tfvars -lock=false -var token=$(token)
 
 prod-apply:
 	git pull
