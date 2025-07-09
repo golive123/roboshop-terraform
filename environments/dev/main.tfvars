@@ -5,10 +5,10 @@ dns_record_rg_name = "golive"
 #storage_image_reference_id = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Compute/images/terraform-test-image"
 storage_image_reference_id = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Compute/images/vault-image"
 network_security_group_id  = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f652/resourceGroups/golive/providers/Microsoft.Network/networkSecurityGroups/allow-all"
-# databases = {
-#   mongodb = {
-#     rgname = "ukwest"
-#   }
+databases = {
+  mongodb = {
+    rgname = "ukwest"
+  }
 #   rabbitmq = {
 #     rgname = "ukwest"
 #   }
@@ -18,7 +18,7 @@ network_security_group_id  = "/subscriptions/a9bc3c93-b459-4ffb-8364-38ff9554f65
 #   redis    = {
 #     rgname = "ukwest"
 #   }
-# }
+ }
 #applications = {
     # frontend-robo = {
     #     rgname = "ukwest"
